@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   counter: 0,
   loading: false,
+  users: [],
   error: {},
 };
 
@@ -14,6 +15,9 @@ const sharedSlice = createSlice({
     },
     decrement: (state, action) => {
       state.counter -= action.payload;
+    },
+    successUsers: (state, action) => {
+      state.users = [...action.payload, ...state.users];
     },
   },
 });

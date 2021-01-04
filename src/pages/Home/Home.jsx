@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../../assets/images/icons/logo.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCouner } from "../../redux/shared/selector";
+import { selectCouner, selectUsers } from "../../redux/shared/selector";
 import {
   increaseCounter,
   decreaseCounter,
+  fetchUser,
 } from "../../redux/shared/actions.js";
 import "./Home.scss";
 
 function Home() {
   const count = useSelector(selectCouner);
+  const users = useSelector(selectUsers);
   const dispatch = useDispatch();
 
   const handleIncrement = () => {
@@ -18,6 +20,10 @@ function Home() {
   const handleDecrement = () => {
     dispatch(decreaseCounter(1));
   };
+
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, []);
 
   return (
     <div className="App">
@@ -43,6 +49,12 @@ function Home() {
             -
           </span>
         </p>
+        <div>
+          {users !== [] &&
+            users.map((item, index) => {
+              return <p key={index}>{item.email}</p>;
+            })}
+        </div>
       </header>
     </div>
   );

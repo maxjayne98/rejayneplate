@@ -1,9 +1,10 @@
 import request from "../../utils/request";
 
 const api = {
-  search: ({ query }) => {
+  users: (count, nat) => {
     return request({
-      url: `example/?q=${query}`,
+      baseURL: "https://randomuser.me/",
+      url: `api?results=${count}&nat=${nat}`,
       method: "GET",
     });
   },
