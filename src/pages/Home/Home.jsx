@@ -1,11 +1,24 @@
 import React from "react";
 import logo from "../../assets/images/icons/logo.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCouner } from "../../redux/shared/selector";
+import {
+  increaseCounter,
+  decreaseCounter,
+} from "../../redux/shared/actions.js";
 import "./Home.scss";
 
 function Home() {
   const count = useSelector(selectCouner);
+  const dispatch = useDispatch();
+
+  const handleIncrement = () => {
+    dispatch(increaseCounter(1));
+  };
+  const handleDecrement = () => {
+    dispatch(decreaseCounter(1));
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -23,8 +36,12 @@ function Home() {
         </a>
         <p>{count}</p>
         <p>
-          <span>+</span>
-          <span>-</span>
+          <span className="hom-page__button" onClick={handleIncrement}>
+            +
+          </span>
+          <span className="hom-page__button" onClick={handleDecrement}>
+            -
+          </span>
         </p>
       </header>
     </div>

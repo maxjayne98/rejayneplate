@@ -18,6 +18,6 @@ const sharedSlice = createSlice({
   },
 });
 
-export const { addTodo, toggleTodo } = sharedSlice.actions;
+export const sharedActions = sharedSlice.actions;
 
 export default sharedSlice.reducer;
