@@ -1,8 +1,11 @@
 import React from "react";
 import logo from "../../assets/images/icons/logo.svg";
+import { useSelector } from "react-redux";
+import { selectCouner } from "../../redux/shared/selector";
 import "./Home.scss";
 
 function Home() {
+  const count = useSelector(selectCouner);
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +21,11 @@ function Home() {
         >
           Learn React
         </a>
+        <p>{count}</p>
+        <p>
+          <span>+</span>
+          <span>-</span>
+        </p>
       </header>
     </div>
   );
