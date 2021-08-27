@@ -6,12 +6,16 @@ import {
 } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-export const ItemContainer = styled.div`
+export const ItemContainer = styled(Link)<{
+  isActive: boolean;
+}>`
   flex: 1;
   text-align: center;
+  color: ${(props) =>
+    props.isActive ? props.theme.primary : props.theme.textColor1};
 `;
 
-export const ItemText = styled(Link)<{
+export const ItemText = styled.div<{
   isActive: boolean;
 }>`
   color: ${(props) =>
@@ -25,7 +29,7 @@ export const UserIcon = styled(AiOutlineUser)<{
 }>`
   color: ${(props) =>
     props.isActive ? props.theme.primary : props.theme.textColor1};
-  font-size: 1.6rem;
+  font-size: 2rem;
   transition: color 0.5s ease;
 `;
 
@@ -34,7 +38,7 @@ export const OrdersIcon = styled(AiOutlineUnorderedList)<{
 }>`
   color: ${(props) =>
     props.isActive ? props.theme.primary : props.theme.textColor1};
-  font-size: 1.6rem;
+  font-size: 2rem;
   transition: color 0.5s ease;
 `;
 
@@ -43,6 +47,6 @@ export const HomeIcon = styled(AiOutlineHome)<{
 }>`
   color: ${(props) =>
     props.isActive ? props.theme.primary : props.theme.textColor1};
-  font-size: 1.6rem;
+  font-size: 2rem;
   transition: color 0.5s ease;
 `;

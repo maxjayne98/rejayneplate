@@ -38,9 +38,9 @@ const FooterItem: React.FC<Props> = ({ name, isActive,to }): JSX.Element => {
   const Icon: React.FC<{ isActive: boolean }> = components[checkName(name)]
   return (
     <>
-      <ItemContainer>
+      <ItemContainer to={{ pathname: `${to}` }} isActive={isActive}>
         <Icon isActive={isActive} />
-        <ItemText to={{ pathname: `${to}` }} isActive={isActive}>
+        <ItemText  isActive={isActive}>
           {faName[name]}
         </ItemText>
       </ItemContainer>

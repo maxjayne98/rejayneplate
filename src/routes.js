@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 const Orders = () => {
   return <div>سفارشات</div>;
@@ -14,6 +15,7 @@ const Profile = () => {
 function Routers() {
   return (
     <Router>
+      <Header />
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/orders" exact component={Orders} />

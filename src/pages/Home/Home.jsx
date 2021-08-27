@@ -1,5 +1,3 @@
-// import type { ReactElement } from "react";
-// import DefaultLayout from "../layouts/DefaultLayout";
 import React from "react";
 import { increaseCounter, decreaseCounter } from "../../redux/shared/actions";
 import { selectCouner } from "../../redux/shared/selector";
