@@ -1,8 +1,9 @@
-import { ItemContainer, ItemText, UserIcon, OrdersIcon } from './Elements'
+import { ItemContainer, ItemText, UserIcon, OrdersIcon, HomeIcon } from './Elements'
 
 type Props = {
   name: string
   isActive: boolean
+  to:string
 }
 
 type IconProps = {
@@ -10,18 +11,27 @@ type IconProps = {
 }
 
 const defaultProps: Props = {
-  name: 'account',
-  isActive: false,
+  name: 'home',
+  isActive: true,
+  to:'/'
 }
 
-const FooterItem: React.FC<Props> = ({ name, isActive }): JSX.Element => {
+const FooterItem: React.FC<Props> = ({ name, isActive,to }): JSX.Element => {
+
   const components: IconProps = {
     account: UserIcon,
     orders: OrdersIcon,
+    home: HomeIcon,
+  }
+
+  const faName:{[key:string]:string} = {
+    account: 'اکانت',
+    orders: 'سفارشات',
+    home: 'خانه',
   }
 
   const checkName = (name: string): string => {
-    const names: Array<string> = ['account', 'orders']
+    const names: Array<string> = ['account', 'orders', 'home']
     return names.some((item) => item === name) ? name : 'orders'
   }
 
@@ -30,8 +40,8 @@ const FooterItem: React.FC<Props> = ({ name, isActive }): JSX.Element => {
     <>
       <ItemContainer>
         <Icon isActive={isActive} />
-        <ItemText href={{ pathname: `/${name}` }} isActive={isActive}>
-          {name}
+        <ItemText to={{ pathname: `${to}` }} isActive={isActive}>
+          {faName[name]}
         </ItemText>
       </ItemContainer>
     </>

@@ -1,32 +1,32 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { lightTheme, darkTheme } from'../../assets/styles/theme'
-import { ColorPallete } from '../../model'
-import ls from 'localStorage'
+import { createSlice } from "@reduxjs/toolkit";
+import { lightTheme, darkTheme } from "../../assets/styles/theme";
+import { ColorPallete } from "../../model";
+import ls, { get, set } from "local-storage";
 
 const themePallete: { [key: string]: ColorPallete } = {
   dark: darkTheme,
   light: lightTheme,
-}
+};
 
 const initialState: themeState = {
-  theme: themePallete[ls.getItem('theme')||'dark'],
-}
+  theme: themePallete[get<string>("theme") || "dark"],
+};
 
 interface themeState {
-  theme: ColorPallete
+  theme: ColorPallete;
 }
 
 const themeSlice = createSlice({
-  name: 'theme',
+  name: "theme",
   initialState: initialState,
   reducers: {
     toggleTheme: (state, action) => {
-      state.theme = { ...themePallete[action.payload] }
-      ls.setItem('theme', action.payload)
+      state.theme = { ...themePallete[action.payload] };
+      set<string>("theme", action.payload);
     },
   },
-})
+});
 
-export const themeActions = themeSlice.actions
+export const themeActions = themeSlice.actions;
 
-export default themeSlice.reducer
+export default themeSlice.reducer;
