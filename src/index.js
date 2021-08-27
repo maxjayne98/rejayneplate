@@ -1,16 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./assets/styles/main.scss";
+// import "./assets/styles/main.scss";
 import Routes from "./routes";
 import { Provider } from "react-redux";
-import configureAppStore from "./redux/store";
+import store from "./redux/store";
+import { GlobalStyles } from "./assets/styles/theme";
 
 import reportWebVitals from "./reportWebVitals";
+import CustomThemeProvider from "./components/Theme/CustomThemeProvider";
 
-const store = configureAppStore();
 ReactDOM.render(
   <Provider store={store}>
-    <Routes />
+    <CustomThemeProvider>
+      <GlobalStyles />
+      <Routes />
+    </CustomThemeProvider>
   </Provider>,
   document.getElementById("root")
 );
