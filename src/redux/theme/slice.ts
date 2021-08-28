@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { lightTheme, darkTheme } from "../../assets/styles/theme";
 import { ColorPallete } from "../../model";
-import ls, { get, set } from "local-storage";
+import { get, set } from "local-storage";
 
 const themePallete: { [key: string]: ColorPallete } = {
   dark: darkTheme,
