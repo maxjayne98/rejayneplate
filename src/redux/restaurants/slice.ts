@@ -20,6 +20,8 @@ const restaurantsSlice = createSlice({
   initialState: initialState,
   reducers: {
     addRestaurants: (state, action) => {
+      console.log(action, state);
+
       state.restaurants = [...action.payload, ...state.restaurants];
     },
     setLoading: (state, action) => {

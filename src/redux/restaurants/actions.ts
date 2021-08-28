@@ -6,11 +6,10 @@ export const fetchRestaurants = (): AppThunk => async (dispatch, getState) => {
   const { restaurants } = getState();
   const { pageIndex, numberOfItems } = restaurants;
   try {
-    await api
-      .restaurants(pageIndex, numberOfItems)
-      .then((res) =>
-        dispatch(restaurantsActions.addRestaurants(res.data.results))
-      );
+    restaurantsActions.setLoading(true);
+    const { data } = await api.restaurants(pageIndex, numberOfItems);
+    dispatch(restaurantsActions.addRestaurants(data));
+    restaurantsActions.setLoading(false);
   } catch (e) {
     console.log("error has happend!!");
   }
