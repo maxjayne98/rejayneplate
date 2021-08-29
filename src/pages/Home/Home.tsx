@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import RestaurantList from "../../components/Restaurants/RestaurantList";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchRestaurants } from "../../redux/restaurants/actions";
@@ -19,6 +20,9 @@ const Home: React.FC = () => {
 
   return (
     <>
+      <Link to="restaurant/4353" style={{ color: "red" }}>
+        saaaaalaaam
+      </Link>
       <RestaurantList
         restaurants={restaurants}
         isLoading={isRestaurantLoading}
