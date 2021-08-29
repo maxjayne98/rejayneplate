@@ -27,7 +27,7 @@ function Routers() {
   return (
     <>
       <Header />
-      <Switch>
+      <Switch location={background || location}>
         <Route path="/" exact component={Home} />
         <Route path="/orders" exact component={Orders} />
         <Route path="/profile" exact component={Profile} />

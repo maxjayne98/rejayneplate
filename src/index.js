@@ -7,7 +7,7 @@ import { ToastContainer } from "react-toastify";
 import { GlobalStyles } from "./assets/styles/theme";
 import reportWebVitals from "./reportWebVitals";
 import CustomThemeProvider from "./components/Theme/CustomThemeProvider";
-
+import "animate.css/animate.css";
 import "react-toastify/dist/ReactToastify.css";
 
 ReactDOM.render(
@@ -15,6 +15,10 @@ ReactDOM.render(
     <CustomThemeProvider>
       <ToastContainer />
       <GlobalStyles />
+      <div
+        style={{ position: "absolute", top: "0", left: "0" }}
+        id="rejayne_modal"
+      ></div>
       <Routes />
     </CustomThemeProvider>
   </Provider>,
