@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import RestaurantList from "../../components/Restaurants/RestaurantList";
-import MenuModal from "../../components/Modals/MenuModal";
+import ModalSheild from "../../components/Modals/ModalSheild";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchRestaurants } from "../../redux/restaurants/actions";
 import {
@@ -14,46 +14,31 @@ const Home: React.FC = () => {
   const dispatch = useAppDispatch();
   const restaurants = useAppSelector(selectRestaurants);
   const isRestaurantLoading = useAppSelector(selectRestaurantIsLoading);
+
   useEffect(() => {
     const isRestaurantsListEmpty = restaurants.length;
     !isRestaurantsListEmpty && dispatch(fetchRestaurants());
   }, []);
 
-  const location = useLocation();
-
-  const [menuModal, setMenuModal] = useState(false);
+  const [menuModalState, setmenuModalState] = useState(false);
 
   return (
     <>
       <Link to="restaurant/4353" style={{ color: "red" }}>
         saaaaalaaam
       </Link>
-      {/* <div>
-        <Link
-          to={{
-            pathname: `/modal/card`,
-            state: { background: location },
-          }}
-          style={{ color: "green", fontSize: "2rem" }}
-        >
-          Moooodal Card
-        </Link>
-      </div> */}
       <div
         style={{ color: "blue", fontSize: "2rem" }}
-        onClick={() => setMenuModal(true)}
+        onClick={() => setmenuModalState(true)}
       >
-        {/* <Link
-          to={{
-            pathname: `/modal/menu`,
-            state: { background: location },
-          }}
-          style={{ color: "blue", fontSize: "2rem" }}
-        > */}
         Moooodal Menu
-        {/* </Link> */}
       </div>
-      {menuModal && <MenuModal onClose={() => setMenuModal(false)} />}
+      {menuModalState && (
+        <ModalSheild
+          onClose={() => setmenuModalState(false)}
+          modal={<div style={{ color: "red" }}>menuuuu</div>}
+        />
+      )}
       <RestaurantList
         restaurants={restaurants}
         isLoading={isRestaurantLoading}

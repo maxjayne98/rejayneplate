@@ -7,7 +7,6 @@ import { ToastContainer } from "react-toastify";
 import { GlobalStyles } from "./assets/styles/theme";
 import reportWebVitals from "./reportWebVitals";
 import CustomThemeProvider from "./components/Theme/CustomThemeProvider";
-import "animate.css/animate.css";
 import "react-toastify/dist/ReactToastify.css";
 
 ReactDOM.render(
