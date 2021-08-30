@@ -9,9 +9,8 @@ export const fetchRestaurants = (): AppThunk => async (dispatch, getState) => {
     restaurantsActions.setLoading(true);
     const { data } = await api.restaurants(pageIndex, numberOfItems);
     dispatch(restaurantsActions.addRestaurants(data));
-    restaurantsActions.setLoading(false);
+    dispatch(restaurantsActions.setLoading(false));
   } catch (e) {
-    // customToast("error", "اطلاعات دریافت نشد");
-    restaurantsActions.setError(true);
+    dispatch(restaurantsActions.setError(true));
   }
 };

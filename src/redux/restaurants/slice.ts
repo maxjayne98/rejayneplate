@@ -31,7 +31,8 @@ const restaurantsSlice = createSlice({
       state.pageIndex = action.payload;
     },
     setError: (state, action: any) => {
-      state.error = action.error;
+      console.log("setErrrror");
+      state.error = action.payload;
     },
   },
 });

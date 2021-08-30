@@ -7,11 +7,10 @@ export const fetchRestaurant =
   (id: string): AppThunk =>
   async (dispatch) => {
     try {
-      restaurantActions.setLoading(true);
+      dispatch(restaurantActions.setLoading(true));
       const { data } = await api.restaurant(id);
-
       dispatch(restaurantActions.setRestaurant(data));
-      restaurantActions.setLoading(false);
+      dispatch(restaurantActions.setLoading(false));
     } catch (e) {
       customToast("error", "اطلاعات دریافت نشد");
     }

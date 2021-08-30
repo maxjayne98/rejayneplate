@@ -13,5 +13,5 @@ export const selectRestaurantPageIndex = (state: RootState): number =>
 export const selectNumberOfItems = (state: RootState): number =>
   state.restaurants.numberOfItems;
 
-export const selectRestaurantError = (state: RootState): boolean =>
+export const selectRestaurantsError = (state: RootState): boolean =>
   state.restaurants.error;

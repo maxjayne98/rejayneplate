@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import RestaurantList from "../../components/Restaurants/RestaurantList";
 import ModalSheild from "../../components/Modals/ModalSheild";
 import { HomeContainer } from "./Elements";
@@ -8,6 +7,7 @@ import { fetchRestaurants } from "../../redux/restaurants/actions";
 import {
   selectRestaurants,
   selectRestaurantIsLoading,
+  selectRestaurantsError,
 } from "../../redux/restaurants/selector";
 import { useEffect } from "react";
 
@@ -15,6 +15,7 @@ const Home: React.FC = () => {
   const dispatch = useAppDispatch();
   const restaurants = useAppSelector(selectRestaurants);
   const isRestaurantLoading = useAppSelector(selectRestaurantIsLoading);
+  const restaurantsError = useAppSelector(selectRestaurantsError);
 
   useEffect(() => {
     const isRestaurantsListEmpty = restaurants.length;
@@ -26,9 +27,6 @@ const Home: React.FC = () => {
   return (
     <>
       <HomeContainer>
-        <Link to="restaurant/4353" style={{ color: "red" }}>
-          saaaaalaaam
-        </Link>
         <div
           style={{ color: "blue", fontSize: "2rem" }}
           onClick={() => setmenuModalState(true)}
@@ -44,11 +42,8 @@ const Home: React.FC = () => {
         <RestaurantList
           restaurants={restaurants}
           isLoading={isRestaurantLoading}
+          hasError={restaurantsError}
         />
-
-        {/* <FoodPartyItemLoader />
-      <RestaurantItemLoader />
-    <FoodItemLoader /> */}
       </HomeContainer>
     </>
   );

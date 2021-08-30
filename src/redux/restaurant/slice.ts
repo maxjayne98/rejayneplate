@@ -23,6 +23,8 @@ const restaurantSlice = createSlice({
       state.restaurant = action.payload;
     },
     setLoading: (state, action) => {
+      console.log("this shit is loading", action);
+
       state.isLoading = action.payload;
     },
     increasePageIndex: (state, action) => {
