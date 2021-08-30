@@ -19,6 +19,7 @@ export const lightTheme = {
   text: "#121620",
   primary: "#151515",
   textPrimary: "#969892",
+  borderRadius: "0.8rem",
 };
 export const darkTheme = {
   body: "#151515",
@@ -30,4 +31,5 @@ export const darkTheme = {
   textColor4: "#f1f1f1",
   iconColor1: "#cbcbcb",
   textPrimary: "#969892",
+  borderRadius: "0.8rem",
 };

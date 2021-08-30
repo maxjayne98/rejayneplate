@@ -1,9 +1,9 @@
 import request from "../../utils/request";
 
 const api = {
-  restaurant: (index: number, numberOfItems: number) => {
+  restaurant: (index: string) => {
     return request({
-      url: `restaurant?pageNumber=${index}&numberOfItems=${numberOfItems}`,
+      url: `restaurant/${index}`,
       method: "GET",
     });
   },

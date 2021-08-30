@@ -1,20 +1,35 @@
 import React from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-// import RestaurantList from "../../components/Restaurants/RestaurantList";
-// import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-// import { fetchRestaurants } from "../../redux/restaurants/actions";
-// import {
-//   selectRestaurants,
-//   selectRestaurantIsLoading,
-// } from "../../redux/restaurants/selector";
-// import { useEffect } from "react";
 
+import MenuList from "../../components/Restaurant/MenuList";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { fetchRestaurant } from "../../redux/restaurant/actions";
+import {
+  selectRestaurant,
+  selectRestaurantIsLoading,
+} from "../../redux/restaurant/selector";
+import { createEmptyArray } from "../../utils/utilityFunctions";
+import FoodItemLoader from "../../components/Loader/FoodItemLoader";
+
+const loaderArry = createEmptyArray(10);
 const Restaurant: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const { menu } = useAppSelector(selectRestaurant);
+  const isLoading: boolean = useAppSelector(selectRestaurantIsLoading);
+  const dispatch = useAppDispatch();
 
+  useEffect(() => {
+    dispatch(fetchRestaurant(id));
+  }, []);
+
+  const loader = loaderArry.map((item, index) => (
+    <FoodItemLoader key={index} />
+  ));
+  if (isLoading) return <>{loader}</>;
   return (
     <>
-      <div style={{ color: "red" }}>{id}</div>
+      <MenuList menu={menu} />
     </>
   );
 };

@@ -1,7 +1,7 @@
 import { Restaurant } from "../../model";
 import { RootState } from "../store";
 
-export const selectrestaurant = (state: RootState): Array<Restaurant> =>
+export const selectRestaurant = (state: RootState): Restaurant =>
   state.restaurant.restaurant;
 
 export const selectRestaurantIsLoading = (state: RootState): boolean =>

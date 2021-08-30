@@ -2,14 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Restaurant } from "../../model";
 
 type RestaurantStates = {
-  restaurant: Array<Restaurant>;
+  restaurant: Restaurant;
   isLoading: boolean;
   pageIndex: number;
   numberOfItems: number;
 };
 
 const initialState: RestaurantStates = {
-  restaurant: [],
+  restaurant: {} as Restaurant,
   isLoading: false,
   pageIndex: 1,
   numberOfItems: 10,
@@ -19,10 +19,8 @@ const restaurantSlice = createSlice({
   name: "restaurant",
   initialState: initialState,
   reducers: {
-    addrestaurant: (state, action) => {
-      console.log(action, state);
-
-      state.restaurant = [...action.payload, ...state.restaurant];
+    setRestaurant: (state, action: any) => {
+      state.restaurant = action.payload;
     },
     setLoading: (state, action) => {
       state.isLoading = action.payload;
