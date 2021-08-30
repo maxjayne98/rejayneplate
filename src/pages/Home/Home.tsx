@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import RestaurantList from "../../components/Restaurants/RestaurantList";
 import ModalSheild from "../../components/Modals/ModalSheild";
+import FoodPartyItemLoader from "../../components/Loader/FoodPartyItemLoader";
+import FoodItemLoader from "../../components/Loader/FoodItemLoader ";
+import RestaurantItemLoader from "../../components/Loader/RestaurantItemLoader";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchRestaurants } from "../../redux/restaurants/actions";
 import {
@@ -43,6 +46,10 @@ const Home: React.FC = () => {
         restaurants={restaurants}
         isLoading={isRestaurantLoading}
       />
+
+      <FoodPartyItemLoader />
+      <RestaurantItemLoader />
+      <FoodItemLoader />
     </>
   );
 };
