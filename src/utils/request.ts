@@ -25,14 +25,14 @@ request.interceptors.request.use(
   }
 );
 
-request.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    const originalRequest = error.config;
-    if (error.response.status === 401) {
-      //add logic for refresh token handling
-    }
-    return Promise.reject(error);
-  }
-);
+// request.interceptors.response.use(
+//   (response) => response,
+//   (error) => {
+//     const originalRequest = error.config;
+//     if (error.response.status === 401) {
+//       //add logic for refresh token handling
+//     }
+//     return Promise.reject(error);
+//   }
+// );
 export default request;

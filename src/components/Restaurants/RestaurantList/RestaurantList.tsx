@@ -2,6 +2,7 @@ import { Restaurant } from "../../../model";
 import RestaurantSimpleCard from "../RestaurantSimpleCard";
 import RestaurantItemLoader from "../../Loader/RestaurantItemLoader";
 import { createEmptyArray } from "../../../utils/utilityFunctions";
+
 type Props = {
   restaurants: Array<Restaurant>;
   isLoading: boolean;

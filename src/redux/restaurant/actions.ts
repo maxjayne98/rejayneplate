@@ -9,13 +9,10 @@ export const fetchRestaurant =
     try {
       restaurantActions.setLoading(true);
       const { data } = await api.restaurant(id);
-      console.log("this shit is res data ", data);
 
       dispatch(restaurantActions.setRestaurant(data));
       restaurantActions.setLoading(false);
-      customToast("success", "اطلاعات دریافت شد");
     } catch (e) {
       customToast("error", "اطلاعات دریافت نشد");
-      console.log("error has happend!!");
     }
   };

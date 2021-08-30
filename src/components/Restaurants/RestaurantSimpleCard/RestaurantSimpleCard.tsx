@@ -18,11 +18,6 @@ const RestaurantSimpleCard: React.FC<Props> = ({ data }): JSX.Element => {
       >
         {name}
       </Link>
-      <img
-        src="https://source.unsplash.com/1600x900/?pizza"
-        alt="profile"
-        style={{ width: "200px", height: "200px" }}
-      />
     </div>
   );
 };

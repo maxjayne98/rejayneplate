@@ -6,6 +6,7 @@ type RestaurantsStates = {
   isLoading: boolean;
   pageIndex: number;
   numberOfItems: number;
+  error: boolean;
 };
 
 const initialState: RestaurantsStates = {
@@ -13,6 +14,7 @@ const initialState: RestaurantsStates = {
   isLoading: false,
   pageIndex: 1,
   numberOfItems: 10,
+  error: false,
 };
 
 const restaurantsSlice = createSlice({
@@ -20,8 +22,6 @@ const restaurantsSlice = createSlice({
   initialState: initialState,
   reducers: {
     addRestaurants: (state, action) => {
-      console.log(action, state);
-
       state.restaurants = [...action.payload, ...state.restaurants];
     },
     setLoading: (state, action) => {
@@ -29,6 +29,9 @@ const restaurantsSlice = createSlice({
     },
     increasePageIndex: (state, action) => {
       state.pageIndex = action.payload;
+    },
+    setError: (state, action: any) => {
+      state.error = action.error;
     },
   },
 });
