@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import RestaurantList from "../../components/Restaurants/RestaurantList";
 import ModalSheild from "../../components/Modals/ModalSheild";
-import { HomeContainer } from "./Elements";
+import DefaultLayout from "../../components/Layouts/DefaultLayout";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchRestaurants } from "../../redux/restaurants/actions";
 import {
@@ -26,7 +26,7 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <HomeContainer>
+      <DefaultLayout>
         <div
           style={{ color: "blue", fontSize: "2rem" }}
           onClick={() => setmenuModalState(true)}
@@ -44,7 +44,7 @@ const Home: React.FC = () => {
           isLoading={isRestaurantLoading}
           hasError={restaurantsError}
         />
-      </HomeContainer>
+      </DefaultLayout>
     </>
   );
 };

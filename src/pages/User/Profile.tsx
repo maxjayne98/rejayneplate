@@ -1,6 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import DefaultLayout from "../../components/Layouts/DefaultLayout";
+
 import { fetchUser } from "../../redux/user/actions";
 import {
   selectUser,
@@ -27,14 +29,14 @@ const Profile: React.FC = () => {
   if (hasUserError) return <Error />;
   if (isUserLoading) return <div style={{ color: "red" }}>Loading!</div>;
   return (
-    <>
+    <DefaultLayout>
       <ProfileDetails
         data={user}
         isLoading={isUserLoading}
         hasError={hasUserError}
       />
       <AddCharge />
-    </>
+    </DefaultLayout>
   );
 };
 
