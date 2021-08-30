@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { ModalContainer } from "./Elements";
 
-const CardModal = () => {
+const CartModal = () => {
   const history = useHistory();
   const back = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
@@ -17,4 +17,4 @@ const CardModal = () => {
   );
 };
 
-export default CardModal;
+export default CartModal;

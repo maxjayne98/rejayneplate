@@ -16,14 +16,7 @@ const AddCharge: React.FC<Props> = (props) => {
       <AddChargeBtn onClick={() => addChargeButtonOnClick()}>
         افزودن شارژ
       </AddChargeBtn>
-      {popupState && (
-        <ChargeModal
-          onClose={addChargeButtonOnClick}
-          animationIn={"slideInUp"}
-          animationOut={"slideOutDown"}
-          animationInDuration={500}
-        />
-      )}
+      {popupState && <ChargeModal onClose={addChargeButtonOnClick} />}
     </div>
   );
 };
