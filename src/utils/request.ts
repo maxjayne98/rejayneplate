@@ -7,13 +7,12 @@ const request = axios.create({
 });
 
 const jwtToken =
-  "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJMb2dobWUiLCJpYXQiOjE2Mjk4MzQ3MDEsInN1YiI6IkF1dGhlbnRpY2F0aW9uIiwiZXhwIjoxNjI5OTIxMTAxLCJFbWFpbCI6ImJrQG1laHJhYi5jb20ifQ.OOm35X8kuDm239hEiIpwcN_KKvU-ffhcFjbMXdBNm0Y";
+  "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJMb2dobWUiLCJpYXQiOjE2MzAzMzQ1MjYsInN1YiI6IkF1dGhlbnRpY2F0aW9uIiwiZXhwIjoxNjMwNDIwOTI2LCJFbWFpbCI6Im0xLmpheEBnbWFpbC5jb20ifQ.ZIL5PkThXpQo0Rx3-cqCt2OAzfAGRkOFr6wQhNZOnrY";
+
 request.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded";
 
-axios.defaults.headers.common["Authorization"] = `Bearer ${
-  get("jwtToken") || jwtToken
-}`;
+axios.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
 
 request.interceptors.request.use(
   (config) => {
@@ -25,14 +24,14 @@ request.interceptors.request.use(
   }
 );
 
-// request.interceptors.response.use(
-//   (response) => response,
-//   (error) => {
-//     const originalRequest = error.config;
-//     if (error.response.status === 401) {
-//       //add logic for refresh token handling
-//     }
-//     return Promise.reject(error);
-//   }
-// );
+request.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const originalRequest = error.config;
+    if (error.response.status === 401) {
+      //add logic for refresh token handling
+    }
+    return Promise.reject(error);
+  }
+);
 export default request;

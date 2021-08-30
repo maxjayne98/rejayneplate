@@ -4,13 +4,10 @@ import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Restaurant from "./pages/Restaurant";
+import Profile from "./pages/User";
 
 const Orders = () => {
   return <div>سفارشات</div>;
-};
-
-const Profile = () => {
-  return <div>پروفایل</div>;
 };
 
 function App() {
