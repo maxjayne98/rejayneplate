@@ -41,10 +41,11 @@ const ModalSheild: React.FC<Props> = ({
     setMonted(true);
     onOpen();
     window.onpopstate = function (event) {
-      if (event.state && event.state.hasOwnProperty("modalState")) {
-        setMonted(false);
-        setTimeout(() => onClose(), animationOutDuration);
-      }
+      setMonted(false);
+      setTimeout(() => onClose(), animationOutDuration);
+    };
+    return () => {
+      window.onpopstate = null;
     };
   }, []);
 
