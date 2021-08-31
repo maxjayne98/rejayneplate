@@ -24,11 +24,11 @@ export const addFood =
       const { data } = await api.addFoodToCart(restaurantId, foodName, count);
       dispatch(cartActions.setCart(data));
       dispatch(cartActions.setCartLoading(false));
-      customToast("success", "عذا با موفقیت اضافه شد.");
+      customToast("success", "غذا با موفقیت اضافه شد.");
       dispatch(cartActions.setAddingFoodLoading(""));
-    } catch ({ response }) {
-      customToast("success", response.content);
-      dispatch(cartActions.setCartError(response.content));
+    } catch (e: any) {
+      customToast("error", e.response.data.content as string);
+      dispatch(cartActions.setCartError(e.response.data.content));
       dispatch(cartActions.setCartLoading(false));
       dispatch(cartActions.setAddingFoodLoading(""));
     }
@@ -44,9 +44,10 @@ export const deleteFood =
       dispatch(cartActions.setCart(data));
       dispatch(cartActions.setCartLoading(false));
       dispatch(cartActions.setLastDeletedFood(""));
-    } catch ({ response }) {
-      customToast("warning", response.content);
-      dispatch(cartActions.setCartError(response.content));
+      customToast("warning", "غذا با موفقیت اضافه شد.");
+    } catch (e: any) {
+      customToast("warning", e.response.data.content as string);
+      dispatch(cartActions.setCartError(e.response.data.content));
       dispatch(cartActions.setCartLoading(false));
       dispatch(cartActions.setLastDeletedFood(""));
     }

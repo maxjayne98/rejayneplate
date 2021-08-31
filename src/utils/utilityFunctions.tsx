@@ -13,3 +13,9 @@ export const addThousandSeparator = (integer: any, separator = ",") => {
 export const removeComma = (value: any) => {
   return value.toString().replace(/,/g, "");
 };
+
+export const isObjectEmpty = (value: any) => {
+  if (!value) return true;
+  if (Object.keys(value).length > 0) return false;
+  return true;
+};

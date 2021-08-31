@@ -21,11 +21,9 @@ const userSlice = createSlice({
       state.user = action.payload;
     },
     setLoading: (state, action) => {
-      console.log("this shit is loading", action);
       state.isLoading = action.payload;
     },
     setError: (state, action) => {
-      console.log("this shit is loading", action);
       state.isLoading = action.payload;
     },
   },

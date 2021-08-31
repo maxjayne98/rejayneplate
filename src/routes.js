@@ -13,14 +13,12 @@ const Orders = () => {
 function App() {
   return (
     <Router>
-      <Header />
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/orders" exact component={Orders} />
         <Route path="/profile" exact component={Profile} />
         <Route path="/restaurant/:id" exact component={Restaurant} />
       </Switch>
-      <Footer />
     </Router>
   );
 }

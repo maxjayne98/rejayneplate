@@ -22,8 +22,8 @@ const RestaurantList: React.FC<Props> = ({
   isLoading,
   hasError,
 }): JSX.Element => {
-  const list = restaurants.map((item) => (
-    <RestaurantSimpleCard key={item.id} data={item} />
+  const list = restaurants.map((item, index) => (
+    <RestaurantSimpleCard key={index} data={item} />
   ));
 
   const loader = loadersArr.map(() => <RestaurantItemLoader />);

@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import MenuList from "../../components/Restaurant/MenuList";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchRestaurant } from "../../redux/restaurant/actions";
+import { fetchCard } from "../../redux/cart/actions";
 import {
   selectRestaurant,
   selectRestaurantIsLoading,
@@ -18,11 +19,12 @@ const Restaurant: React.FC = () => {
 
   useEffect(() => {
     dispatch(fetchRestaurant(id));
+    dispatch(fetchCard());
   }, []);
 
   return (
     <>
-      <MenuList menu={menu} isLoading={isLoading} />
+      <MenuList restaurantId={id} menu={menu} isLoading={isLoading} />
     </>
   );
 };

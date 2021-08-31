@@ -4,9 +4,6 @@ import { RootState } from "../store";
 export const selectFoods = (state: RootState): Array<CartFood> =>
   state.cart.cart.foods;
 
-export const selectFood = (state: RootState, foodId: string): CartFood =>
-  state.cart.cart.foods.find((food) => food.id === foodId);
-
 export const selectCount = (state: RootState): number => state.cart.cart.count;
 export const selectEmpty = (state: RootState): boolean => state.cart.cart.empty;
 export const selectRestaurantId = (state: RootState): string =>
