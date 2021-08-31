@@ -8,8 +8,11 @@ export const fetchRestaurants = (): AppThunk => async (dispatch, getState) => {
   try {
     dispatch(restaurantsActions.setLoading(true));
     const { data } = await api.restaurants(pageIndex, numberOfItems);
-    dispatch(restaurantsActions.addRestaurants(data));
-    dispatch(restaurantsActions.setLoading(false));
+    setTimeout(() => {
+      dispatch(restaurantsActions.increasePageIndex(pageIndex + 1));
+      dispatch(restaurantsActions.addRestaurants(data));
+      dispatch(restaurantsActions.setLoading(false));
+    }, 1000);
   } catch (e) {
     dispatch(restaurantsActions.setError(true));
   }

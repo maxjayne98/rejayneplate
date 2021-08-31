@@ -15,7 +15,7 @@ ReactDOM.render(
       <ToastContainer />
       <GlobalStyles />
       <div
-        style={{ position: "absolute", top: "0", left: "0" }}
+        style={{ position: "absolute", top: "0", left: "0", zIndex: "1000" }}
         id="rejayne_modal"
       ></div>
       <Routes />

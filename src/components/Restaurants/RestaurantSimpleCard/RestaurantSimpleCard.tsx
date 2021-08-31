@@ -14,7 +14,12 @@ const RestaurantSimpleCard: React.FC<Props> = ({ data }): JSX.Element => {
     <div style={{ marginBottom: "0.5rem" }}>
       <Link
         to={{ pathname: `restaurant/${id}` }}
-        style={{ color: "yellow", fontSize: "1.5rem", display: "block" }}
+        style={{
+          color: "yellow",
+          fontSize: "1.5rem",
+          display: "block",
+          height: "300px",
+        }}
       >
         {name}
       </Link>

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import RestaurantList from "../../components/Restaurants/RestaurantList";
 import ModalSheild from "../../components/Modals/ModalSheild";
 import DefaultLayout from "../../components/Layouts/DefaultLayout";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchRestaurants } from "../../redux/restaurants/actions";
+import useInfiniteScroll from "../../hooks/InfiniteScroll";
 import {
   selectRestaurants,
   selectRestaurantIsLoading,
@@ -17,10 +18,33 @@ const Home: React.FC = () => {
   const isRestaurantLoading = useAppSelector(selectRestaurantIsLoading);
   const restaurantsError = useAppSelector(selectRestaurantsError);
 
+  // useInfiniteScroll(() => console.log("mamali"), 70);
+  const loader = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const isRestaurantsListEmpty = restaurants.length;
     !isRestaurantsListEmpty && dispatch(fetchRestaurants());
   }, []);
+
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: "20px",
+      threshold: 1.0,
+    };
+    const observer = new IntersectionObserver(handleObserver, options);
+    if (loader.current) {
+      observer.observe(loader.current);
+    }
+  }, []);
+
+  const handleObserver = (entities: any) => {
+    const target = entities[0];
+
+    if (target.isIntersecting) {
+      dispatch(fetchRestaurants());
+    }
+  };
 
   const [menuModalState, setmenuModalState] = useState(false);
 
@@ -43,6 +67,7 @@ const Home: React.FC = () => {
           restaurants={restaurants}
           isLoading={isRestaurantLoading}
           hasError={restaurantsError}
+          loadMoreRef={loader}
         />
       </DefaultLayout>
     </>
