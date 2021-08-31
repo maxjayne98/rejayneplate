@@ -4,6 +4,7 @@ import ContentLoader from "react-content-loader";
 const RestaurantItemLoader: React.FC = (props) => (
   <ContentLoader
     rtl
+    style={{ width: "100%" }}
     speed={1}
     width={220}
     height={130}

@@ -4,6 +4,7 @@ import themeSlice from "./theme/slice";
 import restaurantsSlice from "./restaurants/slice";
 import restaurantSlice from "./restaurant/slice";
 import userSlice from "./user/slice";
+import cartSlice from "./cart/slice";
 
 const reducers = combineReducers({
   shared: sharedSlice,
@@ -11,6 +12,7 @@ const reducers = combineReducers({
   restaurants: restaurantsSlice,
   restaurant: restaurantSlice,
   user: userSlice,
+  cart: cartSlice,
 });
 
 export default reducers;
