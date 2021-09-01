@@ -4,7 +4,10 @@ import ModalSheild from "../../components/Modals/ModalSheild";
 import DefaultLayout from "../../components/Layouts/DefaultLayout";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchRestaurants } from "../../redux/restaurants/actions";
-import useInfiniteScroll from "../../hooks/InfiniteScroll";
+import {
+  fetchFoodPartyFoods,
+  fetchFoodPartyEndTime,
+} from "../../redux/foodParty/actions";
 import {
   selectRestaurants,
   selectRestaurantIsLoading,
@@ -24,6 +27,11 @@ const Home: React.FC = () => {
   useEffect(() => {
     const isRestaurantsListEmpty = restaurants.length;
     !isRestaurantsListEmpty && dispatch(fetchRestaurants());
+  }, []);
+
+  useEffect(() => {
+    dispatch(fetchFoodPartyEndTime());
+    dispatch(fetchFoodPartyFoods());
   }, []);
 
   useEffect(() => {

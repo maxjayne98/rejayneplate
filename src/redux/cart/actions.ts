@@ -11,7 +11,6 @@ export const fetchCard = (): AppThunk => async (dispatch) => {
     dispatch(cartActions.setCartLoading(false));
   } catch (e) {
     dispatch(cartActions.setCartError(e));
-    dispatch(cartActions.setCartError(true));
   }
 };
 
