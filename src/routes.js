@@ -1,8 +1,7 @@
 import React from "react";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import Home from "./pages/Home";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+import { Error } from "./components/Lottie";
 import Restaurant from "./pages/Restaurant";
 import Profile from "./pages/User";
 
@@ -18,6 +17,7 @@ function App() {
         <Route path="/orders" exact component={Orders} />
         <Route path="/profile" exact component={Profile} />
         <Route path="/restaurant/:id" exact component={Restaurant} />
+        <Route component={Error} />
       </Switch>
     </Router>
   );
