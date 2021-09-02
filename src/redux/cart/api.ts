@@ -32,6 +32,15 @@ const api = {
       },
     });
   },
+  submitNormalOrder: () => {
+    return request({
+      url: `/order/normal`,
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+    });
+  },
 };
 
 export default api;

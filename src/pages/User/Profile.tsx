@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppSelector } from "../../redux/hooks";
 import DefaultLayout from "../../components/Layouts/DefaultLayout";
 
 import {
@@ -16,13 +16,12 @@ import { Error } from "../../components/Lottie/Error";
 interface Props {}
 
 const Profile: React.FC = () => {
-  const dispatch = useAppDispatch();
   const user: User = useAppSelector(selectUser);
   const isUserLoading: boolean = useAppSelector(selectUserIsLoading);
   const hasUserError: boolean = useAppSelector(selectUserError);
 
   if (hasUserError) return <Error />;
-  if (isUserLoading) return <div style={{ color: "red" }}>Loading!</div>;
+  // if (isUserLoading) return <div style={{ color: "red" }}>Loading!</div>;
   return (
     <DefaultLayout>
       <ProfileDetails

@@ -11,6 +11,8 @@ type cartStates = {
   hasDeletingFoorError: string;
   lastAddedFoodId: string;
   lastDeletedFoodId: string;
+  submitNormalOrderLoadingStatus: boolean;
+  submitNormalOrderError: string;
 };
 
 const initialState: cartStates = {
@@ -23,6 +25,8 @@ const initialState: cartStates = {
   hasDeletingFoorError: "",
   lastAddedFoodId: "",
   lastDeletedFoodId: "string",
+  submitNormalOrderLoadingStatus: false,
+  submitNormalOrderError: "",
 };
 
 const cartSlice = createSlice({
@@ -55,6 +59,12 @@ const cartSlice = createSlice({
     },
     setLastDeletedFood: (state, action) => {
       state.lastDeletedFoodId = action.payload;
+    },
+    setNormalOrderLoadingStatus: (state, action) => {
+      state.submitNormalOrderLoadingStatus = action.payload;
+    },
+    setNormalOrderError: (state, action) => {
+      state.submitNormalOrderError = action.payload;
     },
   },
 });

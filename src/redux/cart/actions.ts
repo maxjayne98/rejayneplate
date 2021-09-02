@@ -51,3 +51,13 @@ export const deleteFood =
       dispatch(cartActions.setLastDeletedFood(""));
     }
   };
+
+export const submitNormalOrder = (): AppThunk => async (dispatch) => {
+  try {
+    dispatch(cartActions.setNormalOrderLoadingStatus(true));
+    const { data } = await api.submitNormalOrder();
+    // dispatch(cartActions.setCart(data));
+    dispatch(cartActions.setNormalOrderLoadingStatus(false));
+    customToast("warning", "خرید شما با موفقیت انجام شد !");
+  } catch {}
+};

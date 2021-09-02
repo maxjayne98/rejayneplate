@@ -25,7 +25,8 @@ const foodPartySlice = createSlice({
   initialState: initialState,
   reducers: {
     setEndTime: (state, action) => {
-      state.endTime = action.payload;
+      // state.endTime = action.payload;
+      // state.endTime = dayjs.
     },
     setFoodPartyFoods: (state, action) => {
       state.foodPartyFoods = action.payload;
