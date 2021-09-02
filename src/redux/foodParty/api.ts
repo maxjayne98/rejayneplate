@@ -14,7 +14,7 @@ const api = {
       },
     });
   },
-  fetchFoodPartyendTime: () => {
+  fetchFoodPartyEndTime: () => {
     return request({
       url: "/foodParty/time",
       method: "GET",

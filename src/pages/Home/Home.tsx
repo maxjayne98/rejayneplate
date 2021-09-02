@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import RestaurantList from "../../components/Restaurants/RestaurantList";
 import ModalSheild from "../../components/Modals/ModalSheild";
 import DefaultLayout from "../../components/Layouts/DefaultLayout";
@@ -13,16 +13,19 @@ import {
   selectRestaurantIsLoading,
   selectRestaurantsError,
 } from "../../redux/restaurants/selector";
-import { useEffect } from "react";
+import useCountDown from "../../hooks/useCountDown";
+import { selectFoodPartyEndTime } from "../../redux/foodParty/selector";
+import dayjs from "dayjs";
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
   const restaurants = useAppSelector(selectRestaurants);
   const isRestaurantLoading = useAppSelector(selectRestaurantIsLoading);
   const restaurantsError = useAppSelector(selectRestaurantsError);
-
-  // useInfiniteScroll(() => console.log("mamali"), 70);
+  const foodPartyEndTime = useAppSelector(selectFoodPartyEndTime);
   const loader = useRef<HTMLDivElement>(null);
+  const [data] = useCountDown(foodPartyEndTime);
+  console.log(data);
 
   useEffect(() => {
     const isRestaurantsListEmpty = restaurants.length;

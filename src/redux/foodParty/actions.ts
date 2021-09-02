@@ -17,16 +17,16 @@ export const fetchFoodPartyFoods = (): AppThunk => async (dispatch) => {
 
 export const fetchFoodPartyEndTime = (): AppThunk => async (dispatch) => {
   try {
-    dispatch(foodPartyActions.setFoodPartyendTimeStatus(true));
-    const { data } = await api.fetchFoodPartyendTime();
-    dispatch(foodPartyActions.setFoodPartyFoods(data));
-    dispatch(foodPartyActions.setFoodPartyendTimeStatus(false));
+    dispatch(foodPartyActions.setFoodPartyEndTimeStatus(true));
+    const { data } = await api.fetchFoodPartyEndTime();
+    dispatch(foodPartyActions.setEndTime(data));
+    dispatch(foodPartyActions.setFoodPartyEndTimeStatus(false));
   } catch (e: any) {
     customToast("error", e.response.data.content as string);
     dispatch(
       foodPartyActions.setFoodPartyendTimeError(e.response.data.content)
     );
-    dispatch(foodPartyActions.setFoodPartyendTimeStatus(false));
+    dispatch(foodPartyActions.setFoodPartyEndTimeStatus(false));
   }
 };
 

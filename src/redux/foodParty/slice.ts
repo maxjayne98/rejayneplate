@@ -1,29 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { FoodPartyFood } from "../../model";
+import dayjs, { Dayjs } from "dayjs";
 
 type foodPartyStates = {
-  endTime: number;
+  endTime: Dayjs;
   foodPartyFoods: Array<FoodPartyFood>;
   fetchFoodPartyFoodsLoadingStatus: boolean;
   fetchFoodPartyFoodsError: string;
-  fetchFoodPartyendTimeStatus: boolean;
-  fetchFoodPartyendTimeError: string;
+  fetchFoodPartyEndTimeStatus: boolean;
+  fetchFoodPartyEndTimeError: string;
 };
 
 const initialState: foodPartyStates = {
-  endTime: 0,
+  endTime: dayjs().add(4, "hour"),
   foodPartyFoods: [],
   fetchFoodPartyFoodsLoadingStatus: false,
   fetchFoodPartyFoodsError: "",
-  fetchFoodPartyendTimeStatus: false,
-  fetchFoodPartyendTimeError: "",
+  fetchFoodPartyEndTimeStatus: false,
+  fetchFoodPartyEndTimeError: "",
 };
 
 const foodPartySlice = createSlice({
   name: "foodParty",
   initialState: initialState,
   reducers: {
-    setendTime: (state, action) => {
+    setEndTime: (state, action) => {
       state.endTime = action.payload;
     },
     setFoodPartyFoods: (state, action) => {
@@ -35,11 +36,11 @@ const foodPartySlice = createSlice({
     setFoodPartyFoodsLoadingError: (state, action) => {
       state.fetchFoodPartyFoodsError = action.payload;
     },
-    setFoodPartyendTimeStatus: (state, action) => {
-      state.fetchFoodPartyFoodsLoadingStatus = action.payload;
+    setFoodPartyEndTimeStatus: (state, action) => {
+      state.fetchFoodPartyEndTimeStatus = action.payload;
     },
     setFoodPartyendTimeError: (state, action) => {
-      state.fetchFoodPartyFoodsError = action.payload;
+      state.fetchFoodPartyEndTimeError = action.payload;
     },
   },
 });
