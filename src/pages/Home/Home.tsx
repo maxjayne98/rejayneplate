@@ -13,20 +13,14 @@ import {
   selectRestaurantIsLoading,
   selectRestaurantsError,
 } from "../../redux/restaurants/selector";
-import useCountDown from "../../hooks/useCountDown";
-import { selectFoodPartyEndTime } from "../../redux/foodParty/selector";
-import dayjs from "dayjs";
+import FoodList from "../../components/FoodParty/FoodList";
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
   const restaurants = useAppSelector(selectRestaurants);
   const isRestaurantLoading = useAppSelector(selectRestaurantIsLoading);
   const restaurantsError = useAppSelector(selectRestaurantsError);
-  const foodPartyEndTime = useAppSelector(selectFoodPartyEndTime);
   const loader = useRef<HTMLDivElement>(null);
-  const [data] = useCountDown(foodPartyEndTime);
-  console.log(data);
-
   useEffect(() => {
     const isRestaurantsListEmpty = restaurants.length;
     !isRestaurantsListEmpty && dispatch(fetchRestaurants());
@@ -68,6 +62,7 @@ const Home: React.FC = () => {
         >
           Moooodal Menu
         </div>
+        <FoodList />
         {menuModalState && (
           <ModalSheild
             onClose={() => setmenuModalState(false)}

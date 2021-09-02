@@ -22,7 +22,6 @@ export const fetchFoodPartyEndTime = (): AppThunk => async (dispatch) => {
     dispatch(foodPartyActions.setEndTime(data));
     dispatch(foodPartyActions.setFoodPartyEndTimeStatus(false));
   } catch (e: any) {
-    customToast("error", e.response.data.content as string);
     dispatch(
       foodPartyActions.setFoodPartyendTimeError(e.response.data.content)
     );

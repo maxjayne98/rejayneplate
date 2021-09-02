@@ -1,6 +1,5 @@
 import dayjs, { Dayjs } from "dayjs";
-import { useState, useEffect, useReducer } from "react";
-import { getDefaultLibFilePath } from "typescript";
+import { useState, useEffect } from "react";
 
 const useCountDown = (endTime: Dayjs) => {
   const [data, setData] = useState<{
@@ -8,7 +7,7 @@ const useCountDown = (endTime: Dayjs) => {
     m: number;
     s: number;
     isFinished: boolean;
-  }>({ h: 0, m: 0, s: 0, isFinished: true });
+  }>({ h: 0, m: 0, s: 0, isFinished: false });
   useEffect(() => {
     const id: NodeJS.Timer = setInterval(() => {
       const now = dayjs();
@@ -38,7 +37,12 @@ const useCountDown = (endTime: Dayjs) => {
     }, 1000);
     return () => clearInterval(id);
   }, []);
-  return [data];
+  return {
+    hour: data.h,
+    minute: data.m,
+    second: data.s,
+    isFinished: data.isFinished,
+  };
 };
 
 export default useCountDown;
