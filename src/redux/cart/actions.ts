@@ -3,7 +3,7 @@ import { customToast } from "../../utils";
 import { cartActions } from "./slice";
 import api from "./api";
 
-export const fetchCard = (): AppThunk => async (dispatch) => {
+export const fetchCart = (): AppThunk => async (dispatch) => {
   try {
     dispatch(cartActions.setCartLoading(true));
     const { data } = await api.fetchCart();

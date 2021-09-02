@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { HeaderContainer, CartIcon, MenuIcon } from "./Element";
 import SelectedAddressPreview from "./SelectedAddressPreview";
-import { fetchCard } from "../../redux/cart/actions";
+import { fetchCart } from "../../redux/cart/actions";
+import { fetchUser } from "../../redux/user/actions";
 import { selectCart } from "../../redux/cart/selector";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import MenuModal from "../Modals/MenuModal";
@@ -11,7 +12,11 @@ const Header: React.FC = () => {
   const cart = useAppSelector(selectCart);
   const [isMenuClicked, setIsMenuClicked] = useState(false);
   useEffect(() => {
-    dispatch(fetchCard());
+    dispatch(fetchCart());
+  }, []);
+
+  useEffect(() => {
+    dispatch(fetchUser());
   }, []);
 
   return (

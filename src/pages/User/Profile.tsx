@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import DefaultLayout from "../../components/Layouts/DefaultLayout";
 
-import { fetchUser } from "../../redux/user/actions";
 import {
   selectUser,
   selectUserIsLoading,
@@ -21,10 +20,6 @@ const Profile: React.FC = () => {
   const user: User = useAppSelector(selectUser);
   const isUserLoading: boolean = useAppSelector(selectUserIsLoading);
   const hasUserError: boolean = useAppSelector(selectUserError);
-
-  useEffect(() => {
-    dispatch(fetchUser());
-  }, []);
 
   if (hasUserError) return <Error />;
   if (isUserLoading) return <div style={{ color: "red" }}>Loading!</div>;

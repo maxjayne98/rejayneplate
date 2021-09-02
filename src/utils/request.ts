@@ -6,8 +6,7 @@ const request = axios.create({
   timeout: Number(process.env.REACT_APP_API_TIMEOUT),
 });
 
-const jwtToken =
-  "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJMb2dobWUiLCJpYXQiOjE2MzA1MzExNTgsInN1YiI6IkF1dGhlbnRpY2F0aW9uIiwiZXhwIjoxNjMwNjE3NTU4LCJFbWFpbCI6Im0yQGdtYWlsLmNvbSJ9.HmTmROB6oIzk1X5OipXaS843sbYVwG0LhwNKlqQmt1o";
+const jwtToken = process.env.REACT_APP_JWT_TOKEN as string;
 
 request.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded";

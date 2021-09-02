@@ -6,13 +6,8 @@ const initialState = {
   error: {},
 };
 export const fetchUser = createAsyncThunk("todos/fetch", async () => {
-  // Fetch the backend endpoint:
   const response = await fetch(`https://jsonplaceholder.typicode.com/todos`);
-
-  // Get the JSON from the response:
   const data = await response.json();
-
-  // Return result:
   return data;
 });
 

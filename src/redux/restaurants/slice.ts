@@ -22,7 +22,7 @@ const restaurantsSlice = createSlice({
   initialState: initialState,
   reducers: {
     addRestaurants: (state, action) => {
-      state.restaurants = [...action.payload, ...state.restaurants];
+      state.restaurants = [...state.restaurants, ...action.payload];
     },
     setLoading: (state, action) => {
       state.isLoading = action.payload;
