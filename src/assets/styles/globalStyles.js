@@ -1,13 +1,18 @@
 import { createGlobalStyle } from "styled-components";
+import IranSans from "../fonts/style.css";
 import { normalize } from "./normalizer";
 
 export const GlobalStyles = createGlobalStyle`
   ${normalize}
-
+  ${IranSans}
   body {
     background: ${({ theme }) => {
       return theme.body;
     }};
+    /* font-family: "IRANSans-web"; */
+    font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif,"IRANSans-web";
     transition: background 0.2s ease-in, color 0.2s ease-in;
     direction:rtl;
   }

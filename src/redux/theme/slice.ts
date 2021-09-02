@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { lightTheme, darkTheme } from "../../assets/styles/theme";
+import { lightTheme, darkTheme } from "../../assets/styles/globalStyles";
 import { ColorPallete } from "../../model";
 import { get, set } from "local-storage";
 
